@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meal Plan Generator</title>
     <style>
-        body {
+        body 
+        {
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 20px;
         }
-        .container {
+        .container 
+        {
             max-width: 500px;
             margin: auto;
             padding: 20px;
@@ -18,12 +20,14 @@
             border-radius: 10px;
             background: #f9f9f9;
         }
-        input, select, button {
+        input, select, button 
+        {
             width: 100%;
             margin: 10px 0;
             padding: 10px;
         }
-        .meal-plan {
+        .meal-plan 
+        {
             margin-top: 20px;
             text-align: left;
         }
@@ -41,9 +45,6 @@
             <option value="female">Female</option>
         </select>
         
-        <label>Budget (per day in INR):</label>
-        <input type="number" id="budget" placeholder="Enter your budget">
-        
         <label>Dietary Preference:</label>
         <select id="diet">
             <option value="vegetarian">Vegetarian</option>
@@ -57,7 +58,6 @@
 
     <script>
         function generateMealPlan() {
-            const budget = document.getElementById("budget").value;
             const diet = document.getElementById("diet").value;
             let meals = [];
 
