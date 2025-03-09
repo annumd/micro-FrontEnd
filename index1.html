@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affordable Nutrition</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        header { background: #007bff; color: white; padding: 15px; text-align: center; }
+        .container { padding: 20px; max-width: 800px; margin: auto; background: white; box-shadow: 0px 0px 10px #ccc; border-radius: 8px; }
+        .section { margin-bottom: 20px; }
+        .btn { background: #007bff; color: white; padding: 10px; border: none; cursor: pointer; border-radius: 5px; }
+        .btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Affordable & Nutritious Meals</h1>
+    </header>
+    <div class="container">
+        <div class="section">
+            <h2>About the Project</h2>
+            <p>Providing budget-friendly, nutritious meal plans for low-income groups.</p>
+        </div>
+        <div class="section">
+            <h2>Meal Plans</h2>
+            <button class="btn" onclick="showMeals()">View Affordable Meal Plans</button>
+            <ul id="mealList"></ul>
+        </div>
+        <div class="section">
+            <h2>Smart Grocery Shopping</h2>
+            <p>Find the best ways to buy nutritious food while staying within budget.</p>
+        </div>
+    </div>
+    <script>
+        function showMeals() {
+            let meals = ["Rice and Lentils", "Oats with Fruits", "Egg and Whole Grain Bread", "Vegetable Stir-Fry"];
+            let list = document.getElementById('mealList');
+            list.innerHTML = "";
+            meals.forEach(meal => {
+                let li = document.createElement('li');
+                li.textContent = meal;
+                list.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
