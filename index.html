@@ -3,79 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meal Plan Generator</title>
+    <title>Diet Planner</title>
     <style>
-        body 
-        {
+        body {
             font-family: Arial, sans-serif;
+            background-color: #f0fdf4; /* Light green background */
+            color: #2f855a; /* Dark green text */
+            margin: 0;
+            padding: 0;
             text-align: center;
-            margin: 20px;
         }
-        .container 
-        {
-            max-width: 500px;
+        header {
+            background-color: #38a169; /* Green header */
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+        }
+        .container {
+            width: 80%;
             margin: auto;
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background: #f9f9f9;
         }
-        input, select, button 
-        {
-            width: 100%;
+        .meal-plan {
+            background-color: white;
+            padding: 15px;
             margin: 10px 0;
-            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .meal-plan 
-        {
-            margin-top: 20px;
-            text-align: left;
+        button {
+            background-color: #38a169;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #2f855a;
         }
     </style>
 </head>
 <body>
-    <h2>Affordable Meal Plan Generator</h2>
+    <header>Diet Planner</header>
     <div class="container">
-        <label>Age:</label>
-        <input type="number" id="age" placeholder="Enter your age">
-        
-        <label>Gender:</label>
-        <select id="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select>
-        
-        <label>Dietary Preference:</label>
-        <select id="diet">
-            <option value="vegetarian">Vegetarian</option>
-            <option value="non-vegetarian">Non-Vegetarian</option>
-        </select>
-        
+        <h2>Get Your Personalized Meal Plan</h2>
         <button onclick="generateMealPlan()">Generate Meal Plan</button>
-        
-        <div class="meal-plan" id="mealPlan"></div>
+        <div id="meal-plan-container"></div>
     </div>
-
     <script>
         function generateMealPlan() {
-            const diet = document.getElementById("diet").value;
-            let meals = [];
-
-            if (diet === "vegetarian") {
-                meals = [
-                    "Breakfast: Poha with peanuts & banana",
-                    "Lunch: Dal, rice, and mixed vegetable curry",
-                    "Dinner: Roti with paneer and salad"
-                ];
-            } else {
-                meals = [
-                    "Breakfast: Egg omelette with whole wheat bread",
-                    "Lunch: Chicken curry with rice & curd",
-                    "Dinner: Grilled fish with chapati and sautéed veggies"
-                ];
-            }
-
-            document.getElementById("mealPlan").innerHTML = "<h3>Your Meal Plan:</h3><ul>" + meals.map(m => `<li>${m}</li>`).join("") + "</ul>";
+            const meals = [
+                "Breakfast: Oatmeal with banana and nuts",
+                "Lunch: Grilled chicken with quinoa and veggies",
+                "Snack: Yogurt with honey and fruits",
+                "Dinner: Stir-fried tofu with brown rice"
+            ];
+            let mealContainer = document.getElementById("meal-plan-container");
+            mealContainer.innerHTML = "";
+            meals.forEach(meal => {
+                let div = document.createElement("div");
+                div.className = "meal-plan";
+                div.textContent = meal;
+                mealContainer.appendChild(div);
+            });
         }
     </script>
 </body>
