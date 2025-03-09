@@ -3,45 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affordable Nutrition</title>
+    <title>Meal Plan Generator</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
-        header { background: #007bff; color: white; padding: 15px; text-align: center; }
-        .container { padding: 20px; max-width: 800px; margin: auto; background: white; box-shadow: 0px 0px 10px #ccc; border-radius: 8px; }
-        .section { margin-bottom: 20px; }
-        .btn { background: #007bff; color: white; padding: 10px; border: none; cursor: pointer; border-radius: 5px; }
-        .btn:hover { background: #0056b3; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+        input, select, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+        }
+        .meal-plan {
+            margin-top: 20px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Affordable & Nutritious Meals</h1>
-    </header>
+    <h2>Affordable Meal Plan Generator</h2>
     <div class="container">
-        <div class="section">
-            <h2>About the Project</h2>
-            <p>Providing budget-friendly, nutritious meal plans for low-income groups.</p>
-        </div>
-        <div class="section">
-            <h2>Meal Plans</h2>
-            <button class="btn" onclick="showMeals()">View Affordable Meal Plans</button>
-            <ul id="mealList"></ul>
-        </div>
-        <div class="section">
-            <h2>Smart Grocery Shopping</h2>
-            <p>Find the best ways to buy nutritious food while staying within budget.</p>
-        </div>
+        <label>Age:</label>
+        <input type="number" id="age" placeholder="Enter your age">
+        
+        <label>Gender:</label>
+        <select id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        
+        <label>Budget (per day in INR):</label>
+        <input type="number" id="budget" placeholder="Enter your budget">
+        
+        <label>Dietary Preference:</label>
+        <select id="diet">
+            <option value="vegetarian">Vegetarian</option>
+            <option value="non-vegetarian">Non-Vegetarian</option>
+        </select>
+        
+        <button onclick="generateMealPlan()">Generate Meal Plan</button>
+        
+        <div class="meal-plan" id="mealPlan"></div>
     </div>
+
     <script>
-        function showMeals() {
-            let meals = ["Rice and Lentils", "Oats with Fruits", "Egg and Whole Grain Bread", "Vegetable Stir-Fry"];
-            let list = document.getElementById('mealList');
-            list.innerHTML = "";
-            meals.forEach(meal => {
-                let li = document.createElement('li');
-                li.textContent = meal;
-                list.appendChild(li);
-            });
+        function generateMealPlan() {
+            const budget = document.getElementById("budget").value;
+            const diet = document.getElementById("diet").value;
+            let meals = [];
+
+            if (diet === "vegetarian") {
+                meals = [
+                    "Breakfast: Poha with peanuts & banana",
+                    "Lunch: Dal, rice, and mixed vegetable curry",
+                    "Dinner: Roti with paneer and salad"
+                ];
+            } else {
+                meals = [
+                    "Breakfast: Egg omelette with whole wheat bread",
+                    "Lunch: Chicken curry with rice & curd",
+                    "Dinner: Grilled fish with chapati and sautéed veggies"
+                ];
+            }
+
+            document.getElementById("mealPlan").innerHTML = "<h3>Your Meal Plan:</h3><ul>" + meals.map(m => `<li>${m}</li>`).join("") + "</ul>";
         }
     </script>
 </body>
