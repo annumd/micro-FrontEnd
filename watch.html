@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DietPlanner | Watch</title>
+    <style>
+        body {
+            font-family: "Times New Roman", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1e8eb;
+            color: #333;
+        }
+
+        header {
+            background-color: #931740;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            flex-grow: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        main:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: #f8e2e6;
+        }
+
+        h2 {
+            color: #931740;
+        }
+
+        .video {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 315px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Watch & Learn: Nutrition Videos</h1>
+    </header>
+
+    <main>
+        <h2>1. Basics of Healthy Eating</h2>
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/j8z7UjET1Is" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+
+        <h2>2. Importance of Balanced Diet</h2>
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/X1nCu1P7kKk" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+
+        <h2>3. Indian Government Nutrition Initiatives</h2>
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 DietPlanner. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
