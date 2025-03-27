@@ -1,71 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DietPlanner | About</title>
     <style>
         body {
-            font-family: "Times New Roman", sans-serif;
+            font-family: "Poppins", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f1e8eb;
-            color: #333;
+            background-color: #f0f9f8;
+            color: #2c3e50;
         }
 
         header {
-            background-color: #931740;
+            background-color: #16a085;
             color: #fff;
-            padding: 10px;
+            padding: 15px;
             text-align: center;
+            letter-spacing: 1px;
         }
 
         main {
-            max-width: 900px; /* Adjust width as needed */
-            margin: 20px auto;
+            max-width: 950px;
+            margin: 30px auto;
             background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px; /* Optional for rounded edges */
-            flex-grow: 1; /* Makes main content take up available space */
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
+
         main:hover {
-            transform: translateY(-5px); /* Lifts up the box */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
-            background-color:#f8e2e6 ; /* Slightly changes background color */
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            background-color: #eafaf7;
         }
 
         h2 {
-            color: #931740;
+            color: #16a085;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
         }
 
         footer {
-            background-color: #333;
+            background-color: #16a085;
             color: #fff;
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             position: fixed;
             width: 100%;
             bottom: 0;
             left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                margin: 15px;
+                padding: 20px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <header>
-        <h1>About us</h1>
+        <h1>About DietPlanner</h1>
     </header>
 
     <main>
-        <h2>about us</h2>
-        <p>SNAP, commonly known as food stamps, is</p>
-
+        <h2>Who We Are</h2>
+        <p>
+            DietPlanner is your personalized guide towards a healthier and happier lifestyle. Our mission is to make
+            healthy eating simple, affordable, and accessible for everyone. Whether you're looking to lose weight,
+            maintain a balanced diet, or simply explore nutritious food options, we've got you covered.
+        </p>
+        <p>
+            We believe that small, sustainable changes in your daily food habits can make a big difference in your
+            overall well-being. Our platform is designed to offer meal plans, dietary tips, and expert advice tailored
+            to your unique goals.
+        </p>
+        <p>
+            Join thousands of users who trust DietPlanner to help them lead a healthier life—one meal at a time.
+        </p>
     </main>
 
     <footer>
         <p>&copy; 2025 DietPlanner. All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>
