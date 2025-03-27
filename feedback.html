@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,9 @@
             font-family: "Poppins", "Times New Roman", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0faff;
+            background-color: #fdfafa;
             color: #333;
-            background-image: radial-gradient(#d0f0f7 1px, transparent 1px);
+            background-image: radial-gradient(#f9eaea 1px, transparent 1px);
             background-size: 20px 20px;
         }
 
@@ -35,11 +36,11 @@
         main:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            background-color: #e0f7fa;
+            background-color: #f0fafa;
         }
 
         h2 {
-            color: #0e7490;
+            color: #931740;
             text-align: center;
         }
 
@@ -50,7 +51,8 @@
             margin-top: 20px;
         }
 
-        input, textarea {
+        input,
+        textarea {
             padding: 12px;
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -59,13 +61,22 @@
             transition: border-color 0.3s;
         }
 
-        input:focus, textarea:focus {
+        input:focus,
+        textarea:focus {
             outline: none;
             border-color: #0e7490;
         }
 
+        textarea {
+            resize: none;
+            height: 120px;
+            max-height: 120px;
+            max-width: 100%;
+            max-length: 250;
+        }
+
         button {
-            background-color: #0e7490;
+            background-color: #ff758f;
             color: #fff;
             padding: 12px;
             border: none;
@@ -76,7 +87,7 @@
         }
 
         button:hover {
-            background-color: #075e74;
+            background-color: #ff4d6d;
             transform: scale(1.05);
         }
 
@@ -91,20 +102,21 @@
             left: 0;
         }
 
-        #wordCount {
-            font-size: 0.9rem;
-            color: #555;
-            text-align: right;
-        }
-
         @media (max-width: 600px) {
             main {
                 margin: 15px;
                 padding: 20px;
             }
         }
+
+        .limit {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #888;
+        }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -113,11 +125,11 @@
 
     <main>
         <h2>Feedback Form</h2>
-        <form onsubmit="return validateForm()">
+        <form>
             <input type="text" placeholder="Your Name" required>
             <input type="email" placeholder="Your Email" required>
-            <textarea id="feedback" rows="6" placeholder="Your Feedback (Max 250 words)" required oninput="countWords()"></textarea>
-            <p id="wordCount">Words: 0 / 250</p>
+            <textarea id="feedback" placeholder="Your Feedback (Max 250 characters)" maxlength="250" required></textarea>
+            <div class="limit"><span id="count">0</span>/250</div>
             <button type="submit">Submit Feedback</button>
         </form>
     </main>
@@ -127,21 +139,12 @@
     </footer>
 
     <script>
-        function countWords() {
-            const feedback = document.getElementById('feedback').value.trim();
-            const wordCount = feedback === "" ? 0 : feedback.split(/\s+/).length;
-            document.getElementById('wordCount').innerText = `Words: ${wordCount} / 250`;
-        }
+        const feedback = document.getElementById("feedback");
+        const count = document.getElementById("count");
 
-        function validateForm() {
-            const feedback = document.getElementById('feedback').value.trim();
-            const wordCount = feedback === "" ? 0 : feedback.split(/\s+/).length;
-            if (wordCount > 250) {
-                alert("Please limit your feedback to 250 words.");
-                return false;
-            }
-            return true;
-        }
+        feedback.addEventListener("input", () => {
+            count.textContent = feedback.value.length;
+        });
     </script>
 
 </body>
