@@ -9,9 +9,9 @@
             font-family: "Poppins", "Times New Roman", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff5f7;
+            background-color: #f0faff;
             color: #333;
-            background-image: radial-gradient(#ffecef 1px, transparent 1px);
+            background-image: radial-gradient(#d0f0f7 1px, transparent 1px);
             background-size: 20px 20px;
         }
 
@@ -39,7 +39,7 @@
         }
 
         h2 {
-            color: #931740;
+            color: #0e7490;
             text-align: center;
         }
 
@@ -61,11 +61,11 @@
 
         input:focus, textarea:focus {
             outline: none;
-            border-color: #ff4d6d;
+            border-color: #0e7490;
         }
 
         button {
-            background-color: #ff758f;
+            background-color: #0e7490;
             color: #fff;
             padding: 12px;
             border: none;
@@ -76,7 +76,7 @@
         }
 
         button:hover {
-            background-color: #ff4d6d;
+            background-color: #075e74;
             transform: scale(1.05);
         }
 
@@ -89,6 +89,12 @@
             width: 100%;
             bottom: 0;
             left: 0;
+        }
+
+        #wordCount {
+            font-size: 0.9rem;
+            color: #555;
+            text-align: right;
         }
 
         @media (max-width: 600px) {
@@ -107,10 +113,11 @@
 
     <main>
         <h2>Feedback Form</h2>
-        <form>
+        <form onsubmit="return validateForm()">
             <input type="text" placeholder="Your Name" required>
             <input type="email" placeholder="Your Email" required>
-            <textarea rows="4" placeholder="Your Feedback" required></textarea>
+            <textarea id="feedback" rows="6" placeholder="Your Feedback (Max 250 words)" required oninput="countWords()"></textarea>
+            <p id="wordCount">Words: 0 / 250</p>
             <button type="submit">Submit Feedback</button>
         </form>
     </main>
@@ -118,6 +125,24 @@
     <footer>
         <p>&copy; 2025 DietPlanner. All rights reserved.</p>
     </footer>
+
+    <script>
+        function countWords() {
+            const feedback = document.getElementById('feedback').value.trim();
+            const wordCount = feedback === "" ? 0 : feedback.split(/\s+/).length;
+            document.getElementById('wordCount').innerText = `Words: ${wordCount} / 250`;
+        }
+
+        function validateForm() {
+            const feedback = document.getElementById('feedback').value.trim();
+            const wordCount = feedback === "" ? 0 : feedback.split(/\s+/).length;
+            if (wordCount > 250) {
+                alert("Please limit your feedback to 250 words.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 
 </body>
 </html>
