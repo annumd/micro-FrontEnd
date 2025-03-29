@@ -27,7 +27,16 @@
 
         select, button {
             margin: 10px 5px;
-            padding: 5px;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #931740;
+            color: white;
+            cursor: pointer;
         }
 
         #meal-list {
@@ -40,15 +49,25 @@
         .meal-item {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 50%;
             margin-bottom: 15px;
         }
 
         .meal-item img {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
             margin-right: 10px;
+        }
+
+        .meal-item span {
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -124,26 +143,6 @@
                                 <button onclick="changeMeal('${meal.name}')">Change Meal</button>`;
                 mealList.appendChild(li);
             });
-        }
-
-        function changeMeal(currentMealName) {
-            const mealType = document.getElementById('meal-type').value;
-            const sugar = document.getElementById('sugar').value;
-            const goal = document.getElementById('goal').value;
-            
-            const filteredMeals = meals.filter(meal => 
-                (mealType === 'all' || meal.type === mealType) &&
-                (sugar === 'all' || meal.sugar === sugar) &&
-                (goal === 'all' || meal.goal === goal) &&
-                (meal.name !== currentMealName)
-            );
-            
-            if (filteredMeals.length > 0) {
-                const newMeal = filteredMeals[Math.floor(Math.random() * filteredMeals.length)];
-                alert(`New Meal Suggestion: ${newMeal.name} - ${newMeal.kcal} kcal`);
-            } else {
-                alert('No alternative meals available for the selected preferences.');
-            }
         }
     </script>
 
