@@ -1,13 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DietPlanner | Meal Selector</title>
+    <title>DietPlanner | Meal Plans</title>
     <style>
         body {
-            font-family: "Arial", sans-serif;
+            font-family: "Times New Roman", sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f1e8eb;
@@ -17,130 +16,114 @@
         header {
             background-color: #931740;
             color: #fff;
-            padding: 15px;
+            padding: 10px;
             text-align: center;
-        }
-
-        main {
-            max-width: 900px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
         }
 
         h2 {
             color: #931740;
         }
 
-        label, select, button {
-            display: block;
-            margin: 10px 0;
-            font-size: 16px;
+        select, button {
+            margin: 10px 5px;
+            padding: 5px;
         }
 
-        button {
-            background-color: #931740;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #7a122f;
+        #meal-list {
+            margin-top: 20px;
         }
 
         .meal-item {
-            background: #f8e2e6;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+        .meal-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Diet Meal Selector</h1>
+        <h1>DietPlanner - Meal Selection</h1>
     </header>
 
-    <main>
-        <h2>Select Your Meal Preferences</h2>
-        <label for="mealType">Meal Type:</label>
-        <select id="mealType">
-            <option value="lunch">Lunch</option>
-        </select>
+    <h2>Select Your Preferences</h2>
+    <label for="meal-type">Meal Type:</label>
+    <select id="meal-type">
+        <option value="all">All</option>
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="snack">Snack</option>
+        <option value="dinner">Dinner</option>
+    </select>
 
-        <label for="sugar">Sugar Preference:</label>
-        <select id="sugar">
-            <option value="no_sugar">No Sugar</option>
-        </select>
+    <label for="sugar">Sugar Preference:</label>
+    <select id="sugar">
+        <option value="all">All</option>
+        <option value="sugar">With Sugar</option>
+        <option value="no_sugar">No Sugar</option>
+    </select>
 
-        <label for="goal">Diet Goal:</label>
-        <select id="goal">
-            <option value="muscle_gain">Muscle Gain</option>
-            <option value="balanced">Balanced</option>
-            <option value="weight_gain">Weight Gain</option>
-            <option value="weight_loss">Weight Loss</option>
-            <option value="vegan">Vegan</option>
-        </select>
+    <label for="goal">Diet Goal:</label>
+    <select id="goal">
+        <option value="all">All</option>
+        <option value="weight_loss">Weight Loss</option>
+        <option value="weight_gain">Weight Gain</option>
+        <option value="balanced">Balanced</option>
+        <option value="muscle_gain">Muscle Gain</option>
+        <option value="vegan">Vegan</option>
+    </select>
 
-        <button onclick="getMeals()">Find Meals</button>
+    <button onclick="filterMeals()">Search</button>
 
+    <div id="meal-list">
         <h2>Available Meals</h2>
-        <div id="mealResults"></div>
-    </main>
+        <ul id="meals"></ul>
+    </div>
+
+    <script>
+        const meals = [
+            { name: 'Oatmeal with Fruits', type: 'breakfast', kcal: 300, sugar: 'sugar', goal: 'weight_loss', img: 'images/oatmeal.jpg' },
+            { name: 'Avocado Toast', type: 'breakfast', kcal: 350, sugar: 'no_sugar', goal: 'weight_gain', img: 'images/avocado_toast.jpg' },
+            { name: 'Grilled Chicken with Quinoa and Veggies', type: 'lunch', kcal: 500, sugar: 'no_sugar', goal: 'muscle_gain', img: 'images/grilled_chicken.jpg' },
+            { name: 'Vegetable Biryani with Raita', type: 'lunch', kcal: 450, sugar: 'no_sugar', goal: 'balanced', img: 'images/vegetable_biryani.jpg' },
+            { name: 'Mixed Nuts and Dried Fruits', type: 'snack', kcal: 200, sugar: 'no_sugar', goal: 'balanced', img: 'images/mixed_nuts.jpg' },
+            { name: 'Dal Tadka with Rice', type: 'dinner', kcal: 400, sugar: 'no_sugar', goal: 'balanced', img: 'images/dal_tadka.jpg' },
+            { name: 'Sambar with Brown Rice', type: 'dinner', kcal: 350, sugar: 'no_sugar', goal: 'weight_loss', img: 'images/sambar.jpg' },
+            { name: 'Chana Masala with Roti', type: 'dinner', kcal: 450, sugar: 'no_sugar', goal: 'weight_gain', img: 'images/chana_masala.jpg' }
+        ];
+
+        function filterMeals() {
+            const mealType = document.getElementById('meal-type').value;
+            const sugar = document.getElementById('sugar').value;
+            const goal = document.getElementById('goal').value;
+            
+            const filteredMeals = meals.filter(meal => 
+                (mealType === 'all' || meal.type === mealType) &&
+                (sugar === 'all' || meal.sugar === sugar) &&
+                (goal === 'all' || meal.goal === goal)
+            );
+            
+            const mealList = document.getElementById('meals');
+            mealList.innerHTML = '';
+            filteredMeals.forEach(meal => {
+                const li = document.createElement('li');
+                li.classList.add('meal-item');
+                li.innerHTML = `<img src="${meal.img}" alt="${meal.name}"><span>${meal.name} - ${meal.kcal} kcal</span>`;
+                mealList.appendChild(li);
+            });
+        }
+    </script>
 
     <footer>
         <p>&copy; 2025 DietPlanner. All rights reserved.</p>
     </footer>
 
-    <script>
-        const meals = [
-            { name: "Grilled Chicken with Quinoa and Veggies", meal: "lunch", kcal: 500, sugar: "no_sugar", goal: "muscle_gain" },
-            { name: "Vegetable Biryani with Raita", meal: "lunch", kcal: 450, sugar: "no_sugar", goal: "balanced" },
-            { name: "Rajma Chawal", meal: "lunch", kcal: 400, sugar: "no_sugar", goal: "weight_gain" },
-            { name: "Quinoa Salad with Chickpeas", meal: "lunch", kcal: 350, sugar: "no_sugar", goal: "weight_loss" },
-            { name: "Paneer Tikka with Brown Rice", meal: "lunch", kcal: 500, sugar: "no_sugar", goal: "muscle_gain" },
-            { name: "Vegetable Khichdi", meal: "lunch", kcal: 380, sugar: "no_sugar", goal: "balanced" },
-            { name: "Tofu Stir Fry with Rice", meal: "lunch", kcal: 420, sugar: "no_sugar", goal: "vegan" }
-        ];
-
-        function getMeals() {
-            const mealType = document.getElementById("mealType").value;
-            const sugar = document.getElementById("sugar").value;
-            const goal = document.getElementById("goal").value;
-            
-            const filteredMeals = meals.filter(meal => 
-                meal.meal === mealType && meal.sugar === sugar && meal.goal === goal
-            );
-            
-            const mealResults = document.getElementById("mealResults");
-            mealResults.innerHTML = "";
-            
-            if (filteredMeals.length === 0) {
-                mealResults.innerHTML = "<p>No meals found for selected preferences.</p>";
-            } else {
-                filteredMeals.forEach(meal => {
-                    const mealDiv = document.createElement("div");
-                    mealDiv.classList.add("meal-item");
-                    mealDiv.innerHTML = `<strong>${meal.name}</strong> - ${meal.kcal} kcal`;
-                    mealResults.appendChild(mealDiv);
-                });
-            }
-        }
-    </script>
 </body>
 </html>
