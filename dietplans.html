@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DietPlanner | DIET PLANS</title>
+    <title>DietPlanner | Meal Selector</title>
     <style>
         body {
-            font-family: "Times New Roman", sans-serif;
+            font-family: "Arial", sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f1e8eb;
@@ -17,28 +17,46 @@
         header {
             background-color: #931740;
             color: #fff;
-            padding: 10px;
+            padding: 15px;
             text-align: center;
         }
 
         main {
-            max-width: 900px; /* Adjust width as needed */
+            max-width: 900px;
             margin: 20px auto;
             background-color: #fff;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px; /* Optional for rounded edges */
-            flex-grow: 1; /* Makes main content take up available space */
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-        }
-        main:hover {
-            transform: translateY(-5px); /* Lifts up the box */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
-            background-color:#f8e2e6 ; /* Slightly changes background color */
+            border-radius: 8px;
         }
 
         h2 {
             color: #931740;
+        }
+
+        label, select, button {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #931740;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #7a122f;
+        }
+
+        .meal-item {
+            background: #f8e2e6;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
         }
 
         footer {
@@ -49,25 +67,80 @@
             position: fixed;
             width: 100%;
             bottom: 0;
-            left: 0;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>DIET</h1>
+        <h1>Diet Meal Selector</h1>
     </header>
 
     <main>
-        <h2>1. Supplemental Nutrition Assistance Program (SNAP)</h2>
-        <p>yet to do</p>
+        <h2>Select Your Meal Preferences</h2>
+        <label for="mealType">Meal Type:</label>
+        <select id="mealType">
+            <option value="lunch">Lunch</option>
+        </select>
 
+        <label for="sugar">Sugar Preference:</label>
+        <select id="sugar">
+            <option value="no_sugar">No Sugar</option>
+        </select>
+
+        <label for="goal">Diet Goal:</label>
+        <select id="goal">
+            <option value="muscle_gain">Muscle Gain</option>
+            <option value="balanced">Balanced</option>
+            <option value="weight_gain">Weight Gain</option>
+            <option value="weight_loss">Weight Loss</option>
+            <option value="vegan">Vegan</option>
+        </select>
+
+        <button onclick="getMeals()">Find Meals</button>
+
+        <h2>Available Meals</h2>
+        <div id="mealResults"></div>
     </main>
 
     <footer>
         <p>&copy; 2025 DietPlanner. All rights reserved.</p>
     </footer>
 
+    <script>
+        const meals = [
+            { name: "Grilled Chicken with Quinoa and Veggies", meal: "lunch", kcal: 500, sugar: "no_sugar", goal: "muscle_gain" },
+            { name: "Vegetable Biryani with Raita", meal: "lunch", kcal: 450, sugar: "no_sugar", goal: "balanced" },
+            { name: "Rajma Chawal", meal: "lunch", kcal: 400, sugar: "no_sugar", goal: "weight_gain" },
+            { name: "Quinoa Salad with Chickpeas", meal: "lunch", kcal: 350, sugar: "no_sugar", goal: "weight_loss" },
+            { name: "Paneer Tikka with Brown Rice", meal: "lunch", kcal: 500, sugar: "no_sugar", goal: "muscle_gain" },
+            { name: "Vegetable Khichdi", meal: "lunch", kcal: 380, sugar: "no_sugar", goal: "balanced" },
+            { name: "Tofu Stir Fry with Rice", meal: "lunch", kcal: 420, sugar: "no_sugar", goal: "vegan" }
+        ];
+
+        function getMeals() {
+            const mealType = document.getElementById("mealType").value;
+            const sugar = document.getElementById("sugar").value;
+            const goal = document.getElementById("goal").value;
+            
+            const filteredMeals = meals.filter(meal => 
+                meal.meal === mealType && meal.sugar === sugar && meal.goal === goal
+            );
+            
+            const mealResults = document.getElementById("mealResults");
+            mealResults.innerHTML = "";
+            
+            if (filteredMeals.length === 0) {
+                mealResults.innerHTML = "<p>No meals found for selected preferences.</p>";
+            } else {
+                filteredMeals.forEach(meal => {
+                    const mealDiv = document.createElement("div");
+                    mealDiv.classList.add("meal-item");
+                    mealDiv.innerHTML = `<strong>${meal.name}</strong> - ${meal.kcal} kcal`;
+                    mealResults.appendChild(mealDiv);
+                });
+            }
+        }
+    </script>
 </body>
 </html>
