@@ -11,6 +11,7 @@
             padding: 0;
             background-color: #f1e8eb;
             color: #333;
+            text-align: center;
         }
 
         header {
@@ -31,11 +32,15 @@
 
         #meal-list {
             margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .meal-item {
             display: flex;
             align-items: center;
+            justify-content: center;
             margin-bottom: 15px;
         }
 
@@ -115,9 +120,30 @@
             filteredMeals.forEach(meal => {
                 const li = document.createElement('li');
                 li.classList.add('meal-item');
-                li.innerHTML = `<img src="${meal.img}" alt="${meal.name}"><span>${meal.name} - ${meal.kcal} kcal</span>`;
+                li.innerHTML = `<img src="${meal.img}" alt="${meal.name}"><span>${meal.name} - ${meal.kcal} kcal</span>
+                                <button onclick="changeMeal('${meal.name}')">Change Meal</button>`;
                 mealList.appendChild(li);
             });
+        }
+
+        function changeMeal(currentMealName) {
+            const mealType = document.getElementById('meal-type').value;
+            const sugar = document.getElementById('sugar').value;
+            const goal = document.getElementById('goal').value;
+            
+            const filteredMeals = meals.filter(meal => 
+                (mealType === 'all' || meal.type === mealType) &&
+                (sugar === 'all' || meal.sugar === sugar) &&
+                (goal === 'all' || meal.goal === goal) &&
+                (meal.name !== currentMealName)
+            );
+            
+            if (filteredMeals.length > 0) {
+                const newMeal = filteredMeals[Math.floor(Math.random() * filteredMeals.length)];
+                alert(`New Meal Suggestion: ${newMeal.name} - ${newMeal.kcal} kcal`);
+            } else {
+                alert('No alternative meals available for the selected preferences.');
+            }
         }
     </script>
 
