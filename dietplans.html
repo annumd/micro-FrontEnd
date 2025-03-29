@@ -18,7 +18,8 @@
             background-color: #931740;
             color: #fff;
             padding: 10px;
-            text-align: center;
+            text-align: left;
+            position: relative;
         }
 
         h2 {
@@ -69,12 +70,28 @@
             font-size: 18px;
             font-weight: bold;
         }
+
+        #calorie-tracker {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 15px;
+            background-color: #FFD700;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 200px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>DietPlanner - Meal Selection</h1>
+        <div id="calorie-tracker">
+            <h2>Calorie Tracker</h2>
+            <p>Total Calories: <span id="total-calories">0</span> kcal</p>
+        </div>
     </header>
 
     <h2>Select Your Preferences</h2>
@@ -112,6 +129,8 @@
     </div>
 
     <script>
+        let totalCalories = 0;
+        
         const meals = [
             { name: 'Oatmeal with Fruits', type: 'breakfast', kcal: 300, sugar: 'sugar', goal: 'weight_loss', img: 'images/oatmeal.jpg' },
             { name: 'Avocado Toast', type: 'breakfast', kcal: 350, sugar: 'no_sugar', goal: 'weight_gain', img: 'images/avocado_toast.jpg' },
@@ -136,19 +155,21 @@
             
             const mealList = document.getElementById('meals');
             mealList.innerHTML = '';
+            totalCalories = 0;
+            
             filteredMeals.forEach(meal => {
                 const li = document.createElement('li');
                 li.classList.add('meal-item');
                 li.innerHTML = `<img src="${meal.img}" alt="${meal.name}"><span>${meal.name} - ${meal.kcal} kcal</span>
-                                <button onclick="changeMeal('${meal.name}')">Change Meal</button>`;
+                                <button onclick="addCalories(${meal.kcal})">Add</button>`;
                 mealList.appendChild(li);
             });
         }
+
+        function addCalories(calories) {
+            totalCalories += calories;
+            document.getElementById('total-calories').innerText = totalCalories;
+        }
     </script>
-
-    <footer>
-        <p>&copy; 2025 DietPlanner. All rights reserved.</p>
-    </footer>
-
 </body>
 </html>
