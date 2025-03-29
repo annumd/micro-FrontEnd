@@ -6,98 +6,275 @@
     <title>DietPlanner | Meal Plans</title>
     <style>
         body {
-            font-family: "Times New Roman", sans-serif;
+            font-family: "Poppins", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f1e8eb;
-            color: #333;
-            text-align: center;
+            background-color: #f0f9f8;
+            color: #2c3e50;
+            min-height: 100vh;
         }
 
         header {
-            background-color: #931740;
+            background: linear-gradient(135deg, #16a085, #1abc9c);
             color: #fff;
-            padding: 10px;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(22, 160, 133, 0.9), rgba(26, 188, 156, 0.9));
+            z-index: 1;
         }
 
         h1 {
             margin: 0;
             padding-left: 20px;
             text-align: left;
+            position: relative;
+            z-index: 2;
+            font-size: 24px;
+            animation: fadeInDown 0.8s ease-out;
         }
 
         h2 {
-            color: #931740;
+            color: #16a085;
+            text-align: center;
+            margin: 30px 0;
+            font-size: 28px;
+            position: relative;
+            padding-bottom: 10px;
         }
 
-        select, button {
-            margin: 10px 5px;
-            padding: 10px;
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #16a085, #1abc9c);
+            border-radius: 2px;
+        }
+
+        .filters-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin: 20px auto;
+            max-width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+        }
+
+        label {
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        select {
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
-            border: none;
-            font-size: 16px;
+            font-size: 14px;
+            color: #2c3e50;
+            background-color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #16a085;
+            box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.1);
         }
 
         button {
-            background-color: #931740;
+            background: linear-gradient(135deg, #16a085, #1abc9c);
             color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            margin-top: 25px;
         }
 
-        #meal-list {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .meal-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 50%;
-            margin-bottom: 15px;
-        }
-
-        .meal-item img {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            margin-right: 10px;
-        }
-
-        .meal-item span {
-            font-size: 18px;
-            font-weight: bold;
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(22, 160, 133, 0.3);
         }
 
         #calorie-tracker {
-            padding: 15px;
-            background-color: #ffcc66;
+            background: #fff;
+            padding: 15px 25px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             text-align: center;
+            position: relative;
+            z-index: 2;
+            animation: fadeInRight 0.8s ease-out;
         }
 
-        ul {
-            list-style-type: none;
+        #calorie-tracker h2 {
+            color: #16a085;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+
+        #calorie-tracker p {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        #meal-list {
+            margin: 30px auto;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        #meals {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            list-style: none;
             padding: 0;
         }
 
         li {
             background: #fff;
-            padding: 10px;
-            margin: 5px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .meal-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .meal-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+
+        .meal-details {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .meal-calories {
+            background: #e8f5f3;
+            color: #16a085;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        footer {
+            background: #16a085;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            margin-top: 40px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            h1 {
+                padding-left: 0;
+                text-align: center;
+            }
+
+            .filters-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            select {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            #meals {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -111,34 +288,41 @@
         </div>
     </header>
 
-    <h2>Select Your Preferences</h2>
-    <label for="meal-type">Meal Type:</label>
-    <select id="meal-type">
-        <option value="all">All</option>
-        <option value="breakfast">Breakfast</option>
-        <option value="lunch">Lunch</option>
-        <option value="snack">Snack</option>
-        <option value="dinner">Dinner</option>
-    </select>
+    <div class="filters-container">
+        <div class="filter-group">
+            <label for="meal-type">Meal Type</label>
+            <select id="meal-type">
+                <option value="all">All Meals</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="snack">Snack</option>
+                <option value="dinner">Dinner</option>
+            </select>
+        </div>
 
-    <label for="sugar">Sugar Preference:</label>
-    <select id="sugar">
-        <option value="all">All</option>
-        <option value="sugar">With Sugar</option>
-        <option value="no_sugar">No Sugar</option>
-    </select>
+        <div class="filter-group">
+            <label for="sugar">Sugar Preference</label>
+            <select id="sugar">
+                <option value="all">All Options</option>
+                <option value="sugar">With Sugar</option>
+                <option value="no_sugar">No Sugar</option>
+            </select>
+        </div>
 
-    <label for="goal">Diet Goal:</label>
-    <select id="goal">
-        <option value="all">All</option>
-        <option value="weight_loss">Weight Loss</option>
-        <option value="weight_gain">Weight Gain</option>
-        <option value="balanced">Balanced</option>
-        <option value="muscle_gain">Muscle Gain</option>
-        <option value="vegan">Vegan</option>
-    </select>
+        <div class="filter-group">
+            <label for="goal">Diet Goal</label>
+            <select id="goal">
+                <option value="all">All Goals</option>
+                <option value="weight_loss">Weight Loss</option>
+                <option value="weight_gain">Weight Gain</option>
+                <option value="balanced">Balanced</option>
+                <option value="muscle_gain">Muscle Gain</option>
+                <option value="vegan">Vegan</option>
+            </select>
+        </div>
 
-    <button onclick="filterMeals()">Search</button>
+        <button onclick="filterMeals()">Search Meals</button>
+    </div>
 
     <div id="meal-list">
         <h2>Available Meals</h2>
@@ -254,10 +438,19 @@
             
             filteredMeals.forEach(meal => {
                 const li = document.createElement('li');
-                li.textContent = `${meal.name} - ${meal.kcal} kcal`;
+                li.innerHTML = `
+                    <div class="meal-info">
+                        <div class="meal-name">${meal.name}</div>
+                        <div class="meal-details">${meal.type.charAt(0).toUpperCase() + meal.type.slice(1)} • ${meal.goal.replace('_', ' ').charAt(0).toUpperCase() + meal.goal.slice(1)}</div>
+                    </div>
+                    <div class="meal-calories">${meal.kcal} kcal</div>
+                `;
                 mealList.appendChild(li);
             });
         }
+
+        // Initial load of all meals
+        filterMeals();
     </script>
 
     <footer>
