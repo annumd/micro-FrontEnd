@@ -175,8 +175,8 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 15px;
             animation: fadeIn 0.5s ease-out;
         }
 
@@ -185,10 +185,26 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
 
+        .meal-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .meal-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-grow: 1;
+        }
+
         .meal-info {
             display: flex;
             flex-direction: column;
             gap: 5px;
+            text-align: left;
         }
 
         .meal-name {
@@ -334,92 +350,92 @@
         
         const meals = [
             // Breakfast Meals
-            { name: 'Oatmeal with Fruits', type: 'breakfast', kcal: 300, sugar: 'sugar', goal: 'weight_loss' },
-            { name: 'Avocado Toast', type: 'breakfast', kcal: 350, sugar: 'no_sugar', goal: 'weight_gain' },
-            { name: 'Greek Yogurt with Berries', type: 'breakfast', kcal: 250, sugar: 'sugar', goal: 'weight_loss' },
-            { name: 'Vegetable Omelette', type: 'breakfast', kcal: 400, sugar: 'no_sugar', goal: 'muscle_gain' },
-            { name: 'Chia Seed Pudding', type: 'breakfast', kcal: 280, sugar: 'sugar', goal: 'weight_loss' },
-            { name: 'Peanut Butter Banana Toast', type: 'breakfast', kcal: 350, sugar: 'no_sugar', goal: 'weight_gain' },
-            { name: 'Quinoa Porridge', type: 'breakfast', kcal: 320, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Egg and Avocado Wrap', type: 'breakfast', kcal: 450, sugar: 'no_sugar', goal: 'muscle_gain' },
-            { name: 'Smoothie Bowl', type: 'breakfast', kcal: 300, sugar: 'sugar', goal: 'weight_loss' },
-            { name: 'Tofu Scramble', type: 'breakfast', kcal: 350, sugar: 'no_sugar', goal: 'vegan' },
-            { name: 'Whole Grain Pancakes', type: 'breakfast', kcal: 400, sugar: 'sugar', goal: 'weight_gain' },
-            { name: 'Breakfast Burrito', type: 'breakfast', kcal: 500, sugar: 'no_sugar', goal: 'muscle_gain' },
-            { name: 'Cottage Cheese with Pineapple', type: 'breakfast', kcal: 250, sugar: 'sugar', goal: 'balanced' },
-            { name: 'Ragi Porridge', type: 'breakfast', kcal: 270, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Buckwheat Pancakes', type: 'breakfast', kcal: 380, sugar: 'sugar', goal: 'balanced' },
-            { name: 'Spinach and Feta Omelette', type: 'breakfast', kcal: 350, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Idli with Sambar', type: 'breakfast', kcal: 300, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Vegetable Upma', type: 'breakfast', kcal: 320, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Paratha with Yogurt', type: 'breakfast', kcal: 450, sugar: 'no_sugar', goal: 'weight_gain' },
-            { name: 'Fruit and Nut Smoothie', type: 'breakfast', kcal: 280, sugar: 'sugar', goal: 'weight_loss' },
+            { name: 'Oatmeal with Fruits', type: 'breakfast', kcal: 300, sugar: 'sugar', goal: 'weight_loss', image: 'images/oatmeal_with_fruits.jpg' },
+            { name: 'Avocado Toast', type: 'breakfast', kcal: 350, sugar: 'no_sugar', goal: 'weight_gain', image: 'images/avocado_toast.jpg' },
+            { name: 'Greek Yogurt with Berries', type: 'breakfast', kcal: 250, sugar: 'sugar', goal: 'weight_loss', image: 'images/greek_yogurt_berries.jpg' },
+            { name: 'Vegetable Omelette', type: 'breakfast', kcal: 400, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/vegetable_omelette.jpg' },
+            { name: 'Chia Seed Pudding', type: 'breakfast', kcal: 280, sugar: 'sugar', goal: 'weight_loss', image: 'images/chia_seed_pudding.jpg' },
+            { name: 'Peanut Butter Banana Toast', type: 'breakfast', kcal: 350, sugar: 'no_sugar', goal: 'weight_gain', image: 'images/peanut_butter_banana_toast.jpg' },
+            { name: 'Quinoa Porridge', type: 'breakfast', kcal: 320, sugar: 'no_sugar', goal: 'balanced', image: 'images/quinoa_porridge.jpg' },
+            { name: 'Egg and Avocado Wrap', type: 'breakfast', kcal: 450, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/egg_avocado_wrap.jpg' },
+            { name: 'Smoothie Bowl', type: 'breakfast', kcal: 300, sugar: 'sugar', goal: 'weight_loss', image: 'images/smoothie_bowl.jpg' },
+            { name: 'Tofu Scramble', type: 'breakfast', kcal: 350, sugar: 'no_sugar', goal: 'vegan', image: 'images/tofu_scramble.jpg' },
+            { name: 'Whole Grain Pancakes', type: 'breakfast', kcal: 400, sugar: 'sugar', goal: 'weight_gain', image: 'images/whole_grain_pancakes.jpg' },
+            { name: 'Breakfast Burrito', type: 'breakfast', kcal: 500, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/breakfast_burrito.jpg' },
+            { name: 'Cottage Cheese with Pineapple', type: 'breakfast', kcal: 250, sugar: 'sugar', goal: 'balanced', image: 'images/cottage_cheese_pineapple.jpg' },
+            { name: 'Ragi Porridge', type: 'breakfast', kcal: 270, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/ragi_porridge.jpg' },
+            { name: 'Buckwheat Pancakes', type: 'breakfast', kcal: 380, sugar: 'sugar', goal: 'balanced', image: 'images/buckwheat_pancakes.jpg' },
+            { name: 'Spinach and Feta Omelette', type: 'breakfast', kcal: 350, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/spinach_feta_omelette.jpg' },
+            { name: 'Idli with Sambar', type: 'breakfast', kcal: 300, sugar: 'no_sugar', goal: 'balanced', image: 'images/idli_sambar.jpg' },
+            { name: 'Vegetable Upma', type: 'breakfast', kcal: 320, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/vegetable_upma.jpg' },
+            { name: 'Paratha with Yogurt', type: 'breakfast', kcal: 450, sugar: 'no_sugar', goal: 'weight_gain', image: 'images/paratha_yogurt.jpg' },
+            { name: 'Fruit and Nut Smoothie', type: 'breakfast', kcal: 280, sugar: 'sugar', goal: 'weight_loss', image: 'images/fruit_nut_smoothie.jpg' },
 
             // Lunch Meals
-            { name: 'Grilled Chicken with Quinoa and Veggies', type: 'lunch', kcal: 500, sugar: 'no_sugar', goal: 'muscle_gain' },
-            { name: 'Vegetable Biryani with Raita', type: 'lunch', kcal: 450, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Rajma Chawal', type: 'lunch', kcal: 400, sugar: 'no_sugar', goal: 'weight_gain' },
-            { name: 'Quinoa Salad with Chickpeas', type: 'lunch', kcal: 350, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Paneer Tikka with Brown Rice', type: 'lunch', kcal: 500, sugar: 'no_sugar', goal: 'muscle_gain' },
-            { name: 'Vegetable Khichdi', type: 'lunch', kcal: 380, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Tofu Stir Fry with Rice', type: 'lunch', kcal: 420, sugar: 'no_sugar', goal: 'vegan' },
-            { name: 'Chickpea Curry with Quinoa', type: 'lunch', kcal: 450, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Palak Paneer with Whole Wheat Roti', type: 'lunch', kcal: 480, sugar: 'no_sugar', goal: 'muscle_gain' },
-            { name: 'Vegetable Pulao with Cucumber Raita', type: 'lunch', kcal: 400, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Sambar with Brown Rice', type: 'lunch', kcal: 350, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Egg Curry with Millet Roti', type: 'lunch', kcal: 420, sugar: 'no_sugar', goal: 'muscle_gain' },
-            { name: 'Lentil Soup with Quinoa', type: 'lunch', kcal: 300, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Baingan Bharta with Roti', type: 'lunch', kcal: 380, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Vegetable Korma with Rice', type: 'lunch', kcal: 460, sugar: 'no_sugar', goal: 'weight_gain' },
-            { name: 'Curd Rice with Pickles', type: 'lunch', kcal: 350, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Chana Masala with Jeera Rice', type: 'lunch', kcal: 450, sugar: 'no_sugar', goal: 'weight_gain' },
-            { name: 'Lauki Chana Dal with Rice', type: 'lunch', kcal: 370, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Vegetable Dalia', type: 'lunch', kcal: 320, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Fish Curry with Brown Rice', type: 'lunch', kcal: 500, sugar: 'no_sugar', goal: 'muscle_gain' },
+            { name: 'Grilled Chicken with Quinoa and Veggies', type: 'lunch', kcal: 500, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/grilled_chicken_quinoa.jpg' },
+            { name: 'Vegetable Biryani with Raita', type: 'lunch', kcal: 450, sugar: 'no_sugar', goal: 'balanced', image: 'images/vegetable_biryani.jpg' },
+            { name: 'Rajma Chawal', type: 'lunch', kcal: 400, sugar: 'no_sugar', goal: 'weight_gain', image: 'images/rajma_chawal.jpg' },
+            { name: 'Quinoa Salad with Chickpeas', type: 'lunch', kcal: 350, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/quinoa_salad_chickpeas.jpg' },
+            { name: 'Paneer Tikka with Brown Rice', type: 'lunch', kcal: 500, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/paneer_tikka_rice.jpg' },
+            { name: 'Vegetable Khichdi', type: 'lunch', kcal: 380, sugar: 'no_sugar', goal: 'balanced', image: 'images/vegetable_khichdi.jpg' },
+            { name: 'Tofu Stir Fry with Rice', type: 'lunch', kcal: 420, sugar: 'no_sugar', goal: 'vegan', image: 'images/tofu_stir_fry.jpg' },
+            { name: 'Chickpea Curry with Quinoa', type: 'lunch', kcal: 450, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/chickpea_curry_quinoa.jpg' },
+            { name: 'Palak Paneer with Whole Wheat Roti', type: 'lunch', kcal: 480, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/palak_paneer_roti.jpg' },
+            { name: 'Vegetable Pulao with Cucumber Raita', type: 'lunch', kcal: 400, sugar: 'no_sugar', goal: 'balanced', image: 'images/vegetable_pulao.jpg' },
+            { name: 'Sambar with Brown Rice', type: 'lunch', kcal: 350, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/sambar_rice.jpg' },
+            { name: 'Egg Curry with Millet Roti', type: 'lunch', kcal: 420, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/egg_curry_roti.jpg' },
+            { name: 'Lentil Soup with Quinoa', type: 'lunch', kcal: 300, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/lentil_soup_quinoa.jpg' },
+            { name: 'Baingan Bharta with Roti', type: 'lunch', kcal: 380, sugar: 'no_sugar', goal: 'balanced', image: 'images/baingan_bharta_roti.jpg' },
+            { name: 'Vegetable Korma with Rice', type: 'lunch', kcal: 460, sugar: 'no_sugar', goal: 'weight_gain', image: 'images/vegetable_korma_rice.jpg' },
+            { name: 'Curd Rice with Pickles', type: 'lunch', kcal: 350, sugar: 'no_sugar', goal: 'balanced', image: 'images/curd_rice.jpg' },
+            { name: 'Chana Masala with Jeera Rice', type: 'lunch', kcal: 450, sugar: 'no_sugar', goal: 'weight_gain', image: 'images/chana_masala_rice.jpg' },
+            { name: 'Lauki Chana Dal with Rice', type: 'lunch', kcal: 370, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/lauki_chana_dal_rice.jpg' },
+            { name: 'Vegetable Dalia', type: 'lunch', kcal: 320, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/vegetable_dalia.jpg' },
+            { name: 'Fish Curry with Brown Rice', type: 'lunch', kcal: 500, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/fish_curry_rice.jpg' },
 
             // Snack Meals
-            { name: 'Mixed Nuts and Dried Fruits', type: 'snack', kcal: 200, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Greek Yogurt with Honey and Berries', type: 'snack', kcal: 180, sugar: 'sugar', goal: 'weight_loss' },
-            { name: 'Roasted Chickpeas', type: 'snack', kcal: 150, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Vegetable Sandwich with Whole Wheat Bread', type: 'snack', kcal: 250, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Fruit Salad with Lemon Dressing', type: 'snack', kcal: 120, sugar: 'sugar', goal: 'weight_loss' },
-            { name: 'Peanut Butter on Multigrain Crackers', type: 'snack', kcal: 220, sugar: 'no_sugar', goal: 'weight_gain' },
-            { name: 'Chia Seed Pudding with Mango', type: 'snack', kcal: 200, sugar: 'sugar', goal: 'weight_loss' },
-            { name: 'Hummus with Carrot and Cucumber Sticks', type: 'snack', kcal: 180, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Boiled Eggs with Salt and Pepper', type: 'snack', kcal: 140, sugar: 'no_sugar', goal: 'muscle_gain' },
-            { name: 'Baked Sweet Potato Wedges', type: 'snack', kcal: 170, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Paneer Tikka Skewers', type: 'snack', kcal: 250, sugar: 'no_sugar', goal: 'muscle_gain' },
-            { name: 'Steamed Dhokla', type: 'snack', kcal: 180, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Sprouts Chaat', type: 'snack', kcal: 160, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Masala Makhana', type: 'snack', kcal: 140, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Protein Shake with Almond Milk', type: 'snack', kcal: 300, sugar: 'no_sugar', goal: 'muscle_gain' },
-            { name: 'Vegetable Poha', type: 'snack', kcal: 220, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Fox Nuts (Makhana) Roasted', type: 'snack', kcal: 110, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Banana with Almond Butter', type: 'snack', kcal: 210, sugar: 'no_sugar', goal: 'weight_gain' },
-            { name: 'Multigrain Khakhra', type: 'snack', kcal: 150, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Coconut Water with Nuts', type: 'snack', kcal: 90, sugar: 'no_sugar', goal: 'balanced' },
+            { name: 'Mixed Nuts and Dried Fruits', type: 'snack', kcal: 200, sugar: 'no_sugar', goal: 'balanced', image: 'images/mixed_nuts.jpg' },
+            { name: 'Greek Yogurt with Honey and Berries', type: 'snack', kcal: 180, sugar: 'sugar', goal: 'weight_loss', image: 'images/greek_yogurt_honey.jpg' },
+            { name: 'Roasted Chickpeas', type: 'snack', kcal: 150, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/roasted_chickpeas.jpg' },
+            { name: 'Vegetable Sandwich with Whole Wheat Bread', type: 'snack', kcal: 250, sugar: 'no_sugar', goal: 'balanced', image: 'images/vegetable_sandwich.jpg' },
+            { name: 'Fruit Salad with Lemon Dressing', type: 'snack', kcal: 120, sugar: 'sugar', goal: 'weight_loss', image: 'images/fruit_salad.jpg' },
+            { name: 'Peanut Butter on Multigrain Crackers', type: 'snack', kcal: 220, sugar: 'no_sugar', goal: 'weight_gain', image: 'images/peanut_butter_crackers.jpg' },
+            { name: 'Chia Seed Pudding with Mango', type: 'snack', kcal: 200, sugar: 'sugar', goal: 'weight_loss', image: 'images/chia_pudding_mango.jpg' },
+            { name: 'Hummus with Carrot and Cucumber Sticks', type: 'snack', kcal: 180, sugar: 'no_sugar', goal: 'balanced', image: 'images/hummus_veggies.jpg' },
+            { name: 'Boiled Eggs with Salt and Pepper', type: 'snack', kcal: 140, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/boiled_eggs.jpg' },
+            { name: 'Baked Sweet Potato Wedges', type: 'snack', kcal: 170, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/sweet_potato_wedges.jpg' },
+            { name: 'Paneer Tikka Skewers', type: 'snack', kcal: 250, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/paneer_tikka_skewers.jpg' },
+            { name: 'Steamed Dhokla', type: 'snack', kcal: 180, sugar: 'no_sugar', goal: 'balanced', image: 'images/dhokla.jpg' },
+            { name: 'Sprouts Chaat', type: 'snack', kcal: 160, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/sprouts_chaat.jpg' },
+            { name: 'Masala Makhana', type: 'snack', kcal: 140, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/masala_makhana.jpg' },
+            { name: 'Protein Shake with Almond Milk', type: 'snack', kcal: 300, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/protein_shake.jpg' },
+            { name: 'Vegetable Poha', type: 'snack', kcal: 220, sugar: 'no_sugar', goal: 'balanced', image: 'images/vegetable_poha.jpg' },
+            { name: 'Fox Nuts (Makhana) Roasted', type: 'snack', kcal: 110, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/makhana.jpg' },
+            { name: 'Banana with Almond Butter', type: 'snack', kcal: 210, sugar: 'no_sugar', goal: 'weight_gain', image: 'images/banana_almond_butter.jpg' },
+            { name: 'Multigrain Khakhra', type: 'snack', kcal: 150, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/khakhra.jpg' },
+            { name: 'Coconut Water with Nuts', type: 'snack', kcal: 90, sugar: 'no_sugar', goal: 'balanced', image: 'images/coconut_water_nuts.jpg' },
 
             // Dinner Meals
-            { name: 'Dal Tadka with Rice', type: 'dinner', kcal: 400, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Vegetable Khichdi', type: 'dinner', kcal: 380, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Egg Curry with Rice', type: 'dinner', kcal: 420, sugar: 'no_sugar', goal: 'muscle_gain' },
-            { name: 'Sambar with Brown Rice', type: 'dinner', kcal: 350, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Chana Masala with Roti', type: 'dinner', kcal: 450, sugar: 'no_sugar', goal: 'weight_gain' },
-            { name: 'Cabbage Thoran with Rice', type: 'dinner', kcal: 370, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Lentil Soup with Bread', type: 'dinner', kcal: 300, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Vegetable Fried Rice', type: 'dinner', kcal: 420, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Rajma with Rice', type: 'dinner', kcal: 460, sugar: 'no_sugar', goal: 'weight_gain' },
-            { name: 'Kappa (Tapioca) with Chutney', type: 'dinner', kcal: 400, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Vegetable Stir-Fry with Rice', type: 'dinner', kcal: 420, sugar: 'no_sugar', goal: 'vegan' },
-            { name: 'Curd Rice with Pickles', type: 'dinner', kcal: 350, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Baingan Bharta with Roti', type: 'dinner', kcal: 380, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Ulli Theeyal with Matta Rice', type: 'dinner', kcal: 380, sugar: 'no_sugar', goal: 'balanced' },
-            { name: 'Moru Curry with Rice', type: 'dinner', kcal: 320, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Upma with Coconut Chutney', type: 'dinner', kcal: 320, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Vegetable Dalia', type: 'dinner', kcal: 320, sugar: 'no_sugar', goal: 'weight_loss' },
-            { name: 'Puttu with Kadala Curry', type: 'dinner', kcal: 450, sugar: 'no_sugar', goal: 'weight_gain' },
-            { name: 'Boiled Eggs with Chapati', type: 'dinner', kcal: 350, sugar: 'no_sugar', goal: 'muscle_gain' },
-            { name: 'Chickpea Curry with Rice', type: 'dinner', kcal: 400, sugar: 'no_sugar', goal: 'balanced' }
+            { name: 'Dal Tadka with Rice', type: 'dinner', kcal: 400, sugar: 'no_sugar', goal: 'balanced', image: 'images/dal_tadka_rice.jpg' },
+            { name: 'Vegetable Khichdi', type: 'dinner', kcal: 380, sugar: 'no_sugar', goal: 'balanced', image: 'images/vegetable_khichdi.jpg' },
+            { name: 'Egg Curry with Rice', type: 'dinner', kcal: 420, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/egg_curry_rice.jpg' },
+            { name: 'Sambar with Brown Rice', type: 'dinner', kcal: 350, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/sambar_rice.jpg' },
+            { name: 'Chana Masala with Roti', type: 'dinner', kcal: 450, sugar: 'no_sugar', goal: 'weight_gain', image: 'images/chana_masala_roti.jpg' },
+            { name: 'Cabbage Thoran with Rice', type: 'dinner', kcal: 370, sugar: 'no_sugar', goal: 'balanced', image: 'images/cabbage_thoran_rice.jpg' },
+            { name: 'Lentil Soup with Bread', type: 'dinner', kcal: 300, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/lentil_soup_bread.jpg' },
+            { name: 'Vegetable Fried Rice', type: 'dinner', kcal: 420, sugar: 'no_sugar', goal: 'balanced', image: 'images/vegetable_fried_rice.jpg' },
+            { name: 'Rajma with Rice', type: 'dinner', kcal: 460, sugar: 'no_sugar', goal: 'weight_gain', image: 'images/rajma_chawal.jpg' },
+            { name: 'Kappa (Tapioca) with Chutney', type: 'dinner', kcal: 400, sugar: 'no_sugar', goal: 'balanced', image: 'images/kappa_chutney.jpg' },
+            { name: 'Vegetable Stir-Fry with Rice', type: 'dinner', kcal: 420, sugar: 'no_sugar', goal: 'vegan', image: 'images/veg_stir_fry_rice.jpg' },
+            { name: 'Curd Rice with Pickles', type: 'dinner', kcal: 350, sugar: 'no_sugar', goal: 'balanced', image: 'images/curd_rice.jpg' },
+            { name: 'Baingan Bharta with Roti', type: 'dinner', kcal: 380, sugar: 'no_sugar', goal: 'balanced', image: 'images/baingan_bharta_roti.jpg' },
+            { name: 'Ulli Theeyal with Matta Rice', type: 'dinner', kcal: 380, sugar: 'no_sugar', goal: 'balanced', image: 'images/ulli_theeyal_rice.jpg' },
+            { name: 'Moru Curry with Rice', type: 'dinner', kcal: 320, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/moru_curry_rice.jpg' },
+            { name: 'Upma with Coconut Chutney', type: 'dinner', kcal: 320, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/upma_chutney.jpg' },
+            { name: 'Vegetable Dalia', type: 'dinner', kcal: 320, sugar: 'no_sugar', goal: 'weight_loss', image: 'images/vegetable_dalia.jpg' },
+            { name: 'Puttu with Kadala Curry', type: 'dinner', kcal: 450, sugar: 'no_sugar', goal: 'weight_gain', image: 'images/puttu_kadala.jpg' },
+            { name: 'Boiled Eggs with Chapati', type: 'dinner', kcal: 350, sugar: 'no_sugar', goal: 'muscle_gain', image: 'images/boiled_eggs_chapati.jpg' },
+            { name: 'Chickpea Curry with Rice', type: 'dinner', kcal: 400, sugar: 'no_sugar', goal: 'balanced', image: 'images/chickpea_curry_rice.jpg' }
         ];
 
         function filterMeals() {
@@ -438,12 +454,16 @@
             
             filteredMeals.forEach(meal => {
                 const li = document.createElement('li');
+                const imageSrc = meal.image ? meal.image : 'images/placeholder.jpg';
                 li.innerHTML = `
-                    <div class="meal-info">
-                        <div class="meal-name">${meal.name}</div>
-                        <div class="meal-details">${meal.type.charAt(0).toUpperCase() + meal.type.slice(1)} • ${meal.goal.replace('_', ' ').charAt(0).toUpperCase() + meal.goal.slice(1)}</div>
+                    <img src="${imageSrc}" alt="${meal.name}" class="meal-image" onerror="this.onerror=null; this.src='images/placeholder.jpg';">
+                    <div class="meal-content">
+                        <div class="meal-info">
+                            <div class="meal-name">${meal.name}</div>
+                            <div class="meal-details">${meal.type.charAt(0).toUpperCase() + meal.type.slice(1)} • ${meal.goal.replace('_', ' ').charAt(0).toUpperCase() + meal.goal.slice(1)}</div>
+                        </div>
+                        <div class="meal-calories">${meal.kcal} kcal</div>
                     </div>
-                    <div class="meal-calories">${meal.kcal} kcal</div>
                 `;
                 mealList.appendChild(li);
             });
