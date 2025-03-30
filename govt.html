@@ -6,47 +6,108 @@
     <title>DietPlanner | Govt Policies</title>
     <style>
         body {
-            font-family: "Times New Roman", sans-serif;
+            font-family: "Poppins", "Times New Roman", sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f1e8eb;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
             background-color: #931740;
             color: #fff;
-            padding: 10px;
+            padding: 25px 20px;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+            font-weight: 600;
+            animation: fadeIn 1s ease-out;
         }
 
         main {
-            max-width: 900px; /* Adjust width as needed */
-            margin: 20px auto;
+            max-width: 900px;
+            width: 90%;
+            margin: 30px auto;
             background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px; /* Optional for rounded edges */
-            flex-grow: 1; /* Makes main content take up available space */
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            flex-grow: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideInUp 0.8s ease-out;
         }
-         main:hover {
-            transform: translateY(-5px); /* Lifts up the box */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
-            background-color:#f8e2e6 ; /* Slightly changes background color */
+        main:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
         }
-        
+
         h2 {
             color: #931740;
+            margin-top: 0;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            text-align: justify;
         }
 
         footer {
-            background-color: #333;
+            background-color: #931740;
             color: #fff;
             text-align: center;
-            padding: 10px;
-            position: relative;
+            padding: 15px;
             width: 100%;
+            margin-top: auto;
+            box-sizing: border-box;
+        }
+
+        footer p {
+            text-align: center;
+            margin: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            main {
+                width: 95%;
+                margin: 20px auto;
+                padding: 25px;
+            }
+            header h1 {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -58,31 +119,31 @@
 
     <main>
         <h2>1. Supplemental Nutrition Assistance Program (SNAP)</h2>
-        <p>SNAP, commonly known as food stamps, is a federal program that provides low-income individuals and families with funds to purchase groceries...</p>
+        <p>SNAP, commonly known as food stamps, is a federal program that provides low-income individuals and families with funds to purchase groceries. It aims to improve food security and access to healthy food options.</p>
 
         <h2>2. Women, Infants, and Children (WIC) Program</h2>
-        <p>The WIC program supports low-income pregnant women, new mothers, and children under the age of five by providing healthy food, nutrition education...</p>
+        <p>The WIC program supports low-income pregnant women, new mothers, and children under the age of five by providing supplemental nutritious foods, nutrition education, and healthcare referrals.</p>
 
         <h2>3. National School Lunch Program (NSLP) & School Breakfast Program (SBP)</h2>
-        <p>These federally assisted meal programs provide free or reduced-price meals to children in public and nonprofit private schools...</p>
+        <p>These federally assisted meal programs operate in public and nonprofit private schools, providing nutritionally balanced, free or reduced-price meals to eligible children each school day.</p>
 
         <h2>4. The Emergency Food Assistance Program (TEFAP)</h2>
-        <p>TEFAP is a federal program that supplies food banks and pantries with free, nutritious food for low-income families...</p>
+        <p>TEFAP is a federal program that helps supplement the diets of low-income Americans, including elderly people, by providing them with emergency food and nutrition assistance at no cost.</p>
 
         <h2>5. Meals on Wheels</h2>
-        <p>Meals on Wheels is a community-based program that delivers nutritious meals to seniors who are homebound...</p>
+        <p>Meals on Wheels is typically a community-based program that delivers nutritious meals directly to the homes of seniors and individuals with disabilities who are unable to prepare meals for themselves.</p>
 
         <h2>6. Summer Food Service Program (SFSP)</h2>
-        <p>SFSP provides free meals to children in low-income areas during the summer months when school is not in session...</p>
+        <p>SFSP ensures that low-income children continue to receive nutritious meals when school is not in session during the summer months. Free meals are provided at approved sites in areas with significant concentrations of low-income children.</p>
 
         <h2>7. Commodity Supplemental Food Program (CSFP)</h2>
-        <p>CSFP is designed to improve the health of low-income seniors aged 60 and older by providing them with nutritious food packages...</p>
+        <p>CSFP works to improve the health of low-income persons at least 60 years of age by supplementing their diets with nutritious USDA Foods. It provides monthly food packages designed to meet specific nutritional needs.</p>
 
-        <h2>8. Poshan Abhiyaan (National Nutrition Mission)</h2>
-        <p>Launched by the Government of India in 2018, this mission aims to tackle malnutrition and improve nutritional outcomes...</p>
+        <h2>8. Poshan Abhiyaan (National Nutrition Mission) - India</h2>
+        <p>Launched by the Government of India in 2018, this mission aims to tackle malnutrition and improve nutritional outcomes for children, pregnant women, and lactating mothers through targeted interventions and convergence of various schemes.</p>
 
-        <h2>9. Integrated Child Development Services (ICDS)</h2>
-        <p>This is one of India’s flagship welfare schemes for children under six years of age and their mothers...</p>
+        <h2>9. Integrated Child Development Services (ICDS) - India</h2>
+        <p>This is one of India's flagship welfare schemes providing a package of services including supplementary nutrition, pre-school non-formal education, nutrition & health education, immunization, health check-up, and referral services to children under six years and their mothers.</p>
     </main>
 
     <footer>
