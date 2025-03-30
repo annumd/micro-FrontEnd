@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -177,17 +176,21 @@
             const name = nameInput.value.trim();
             const feedbackText = feedback.value.trim();
 
-            if (name && feedbackText) {
+            if (name.toLowerCase() === "clear" && feedbackText.toLowerCase() === "clear") {
+                feedbackList.innerHTML = "";
+                localStorage.removeItem("feedbacks");
+            } else if (name && feedbackText) {
                 const feedbackItem = document.createElement("div");
                 feedbackItem.classList.add("feedback-item");
                 feedbackItem.textContent = `${name}: ${feedbackText}`;
                 feedbackList.appendChild(feedbackItem);
 
                 localStorage.setItem("feedbacks", feedbackList.innerHTML);
-                nameInput.value = "";
-                feedback.value = "";
-                count.textContent = "0";
             }
+            
+            nameInput.value = "";
+            feedback.value = "";
+            count.textContent = "0";
         });
 
         document.addEventListener("DOMContentLoaded", () => {
