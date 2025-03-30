@@ -179,25 +179,25 @@
             if (name.toLowerCase() === "clear" && feedbackText.toLowerCase() === "clear") {
                 feedbackList.innerHTML = "";
                 localStorage.removeItem("feedbacks");
+            } else if (name.toLowerCase() === "delete") {
+                const feedbackItems = feedbackList.getElementsByClassName("feedback-item");
+                for (let i = feedbackItems.length - 1; i >= 0; i--) {
+                    if (feedbackItems[i].textContent.startsWith(feedbackText + ":")) {
+                        feedbackItems[i].remove();
+                    }
+                }
+                localStorage.setItem("feedbacks", feedbackList.innerHTML);
             } else if (name && feedbackText) {
                 const feedbackItem = document.createElement("div");
                 feedbackItem.classList.add("feedback-item");
                 feedbackItem.textContent = `${name}: ${feedbackText}`;
                 feedbackList.appendChild(feedbackItem);
-
                 localStorage.setItem("feedbacks", feedbackList.innerHTML);
             }
             
             nameInput.value = "";
             feedback.value = "";
             count.textContent = "0";
-        });
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const savedFeedbacks = localStorage.getItem("feedbacks");
-            if (savedFeedbacks) {
-                feedbackList.innerHTML = savedFeedbacks;
-            }
         });
     </script>
 </body>
