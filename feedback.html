@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,6 +92,23 @@
             transform: scale(1.05);
         }
 
+        .feedback-list {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .feedback-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .feedback-item:last-child {
+            border-bottom: none;
+        }
+
         footer {
             background-color: #0e7490;
             color: #fff;
@@ -125,12 +143,15 @@
 
     <main>
         <h2>Feedback Form</h2>
-        <form>
-            <input type="text" placeholder="Your Name" required>
+        <form id="feedbackForm">
+            <input type="text" id="name" placeholder="Your Name" required>
             <textarea id="feedback" placeholder="Your Feedback (Max 250 characters)" maxlength="250" required></textarea>
             <div class="limit"><span id="count">0</span>/250</div>
             <button type="submit">Submit Feedback</button>
         </form>
+        
+        <div class="feedback-list" id="feedbackList"></div>
+        
         <p style="text-align: center; margin-top: 20px;">
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_2lS_P3EpTq65CmKHjVh4KL0Y-4kR0CAlu0M7ljsqc8zbNw/viewform?usp=dialog" target="_blank" style="color: #0e7490; font-weight: bold; text-decoration: none;">Fill out Google Form</a>
         </p>
@@ -143,11 +164,38 @@
     <script>
         const feedback = document.getElementById("feedback");
         const count = document.getElementById("count");
+        const feedbackForm = document.getElementById("feedbackForm");
+        const feedbackList = document.getElementById("feedbackList");
+        const nameInput = document.getElementById("name");
 
         feedback.addEventListener("input", () => {
             count.textContent = feedback.value.length;
         });
-    </script>
 
+        feedbackForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const name = nameInput.value.trim();
+            const feedbackText = feedback.value.trim();
+
+            if (name && feedbackText) {
+                const feedbackItem = document.createElement("div");
+                feedbackItem.classList.add("feedback-item");
+                feedbackItem.textContent = `${name}: ${feedbackText}`;
+                feedbackList.appendChild(feedbackItem);
+
+                localStorage.setItem("feedbacks", feedbackList.innerHTML);
+                nameInput.value = "";
+                feedback.value = "";
+                count.textContent = "0";
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedFeedbacks = localStorage.getItem("feedbacks");
+            if (savedFeedbacks) {
+                feedbackList.innerHTML = savedFeedbacks;
+            }
+        });
+    </script>
 </body>
 </html>
