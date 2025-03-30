@@ -10,126 +10,218 @@
             font-family: "Poppins", "Times New Roman", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fdfafa;
-            color: #333;
-            background-image: radial-gradient(#f9eaea 1px, transparent 1px);
-            background-size: 20px 20px;
+            background-color: #f0f9f8;
+            color: #2c3e50;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
-            background-color: #0e7490;
+            background: #0e7490;
             color: #fff;
-            padding: 15px;
+            padding: 25px 20px;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+            animation: fadeIn 1s ease-out;
         }
 
         main {
             max-width: 900px;
+            width: 90%;
             margin: 30px auto;
-            background-color: #fff;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            padding: 0;
+            background-color: transparent;
+            box-shadow: none;
+            border-radius: 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        main:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            background-color: #f0fafa;
+        .feedback-form-container {
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            margin-bottom: 30px;
+            animation: slideInUp 0.8s ease-out;
         }
 
         h2 {
-            color: #931740;
+            color: #0e7490;
             text-align: center;
+            margin-top: 0;
+            margin-bottom: 25px;
         }
 
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-top: 20px;
         }
 
         input,
         textarea {
-            padding: 12px;
-            border: 1px solid #ddd;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1rem;
-            background-color: #fff;
-            transition: border-color 0.3s;
+            font-family: "Poppins", "Times New Roman", sans-serif;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         input:focus,
         textarea:focus {
             outline: none;
             border-color: #0e7490;
+            box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.1);
+            background-color: #fff;
         }
 
         textarea {
             resize: none;
+            min-height: 100px;
             height: 120px;
-            max-height: 120px;
-            max-width: 100%;
-            max-length: 250;
         }
 
-        button {
-            background-color: #ff758f;
+        .limit {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-top: -10px;
+        }
+
+        button[type="submit"] {
+            background: #0e7490;
             color: #fff;
-            padding: 12px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 50px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 1rem;
-            transition: background-color 0.3s, transform 0.2s;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 10px;
         }
 
-        button:hover {
-            background-color: #ff4d6d;
-            transform: scale(1.05);
+        button[type="submit"]:hover {
+            background: #0b5a6f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(14, 116, 144, 0.2);
+        }
+
+        .google-form-link {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background-color: #e0f7fc;
+            color: #0e7490;
+            border: 2px solid #b3eaf7;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .google-form-link:hover {
+            background-color: #b3eaf7;
+            border-color: #0e7490;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .feedback-display-container {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            flex-grow: 1;
+            max-height: 450px;
+            overflow-y: auto;
+            animation: fadeIn 1s ease-out 0.5s;
+            animation-fill-mode: backwards;
+            margin-bottom: 30px;
+        }
+
+        .feedback-display-container h3 {
+            color: #0e7490;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
         }
 
         .feedback-list {
-            margin-top: 20px;
-            padding: 15px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .feedback-item {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
         }
 
         .feedback-item:last-child {
             border-bottom: none;
         }
 
+        .feedback-item strong {
+            color: #0e7490;
+            margin-right: 8px;
+        }
+
         footer {
             background-color: #0e7490;
             color: #fff;
             text-align: center;
-            padding: 12px;
-            position: fixed;
+            padding: 15px;
             width: 100%;
             bottom: 0;
             left: 0;
+            margin-top: auto;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                width: 95%;
+                margin: 20px auto;
+            }
         }
 
         @media (max-width: 600px) {
             main {
-                margin: 15px;
+                margin: 15px auto;
+            }
+            .feedback-form-container,
+            .feedback-display-container {
                 padding: 20px;
+            }
+            header h1 {
+                font-size: 24px;
             }
         }
 
-        .limit {
-            text-align: right;
-            font-size: 0.9rem;
-            color: #888;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -137,23 +229,31 @@
 <body>
 
     <header>
-        <h1>We Value Your Valuable Feedback!</h1>
+        <h1>We Value Your Feedback!</h1>
     </header>
 
     <main>
-        <h2>Feedback Form</h2>
-        <form id="feedbackForm">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <textarea id="feedback" placeholder="Your Feedback (Max 250 characters)" maxlength="250" required></textarea>
-            <div class="limit"><span id="count">0</span>/250</div>
-            <button type="submit">Submit Feedback</button>
-        </form>
-        
-        <div class="feedback-list" id="feedbackList"></div>
-        
-        <p style="text-align: center; margin-top: 20px;">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_2lS_P3EpTq65CmKHjVh4KL0Y-4kR0CAlu0M7ljsqc8zbNw/viewform?usp=dialog" target="_blank" style="color: #0e7490; font-weight: bold; text-decoration: none;">Fill out Google Form</a>
-        </p>
+        <div class="feedback-form-container">
+            <h2>Feedback Form</h2>
+            <form id="feedbackForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <textarea id="feedback" placeholder="Share your thoughts... (Max 250 characters)" maxlength="250" required></textarea>
+                <div class="limit"><span id="count">0</span>/250</div>
+                <button type="submit">Submit Feedback</button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 20px;">
+                Alternatively, you can 
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_2lS_P3EpTq65CmKHjVh4KL0Y-4kR0CAlu0M7ljsqc8zbNw/viewform?usp=dialog" 
+                   target="_blank" 
+                   class="google-form-link">Fill out our Google Form</a>.
+            </p>
+        </div>
+
+        <div class="feedback-display-container">
+            <h3>Submitted Feedback</h3>
+            <div class="feedback-list" id="feedbackList"></div>
+        </div>
     </main>
 
     <footer>
@@ -167,6 +267,13 @@
         const feedbackList = document.getElementById("feedbackList");
         const nameInput = document.getElementById("name");
 
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedFeedbacks = localStorage.getItem("feedbacks");
+            if (savedFeedbacks) {
+                feedbackList.innerHTML = savedFeedbacks;
+            }
+        });
+
         feedback.addEventListener("input", () => {
             count.textContent = feedback.value.length;
         });
@@ -176,22 +283,42 @@
             const name = nameInput.value.trim();
             const feedbackText = feedback.value.trim();
 
+            if (!name || !feedbackText) {
+                alert("Please enter both name and feedback.");
+                return;
+            }
+
             if (name.toLowerCase() === "clear" && feedbackText.toLowerCase() === "clear") {
-                feedbackList.innerHTML = "";
-                localStorage.removeItem("feedbacks");
+                if (confirm("Are you sure you want to clear all feedback?")) {
+                    feedbackList.innerHTML = "";
+                    localStorage.removeItem("feedbacks");
+                }
             } else if (name.toLowerCase() === "delete") {
+                const nameToDelete = feedbackText;
                 const feedbackItems = feedbackList.getElementsByClassName("feedback-item");
+                let deletedCount = 0;
                 for (let i = feedbackItems.length - 1; i >= 0; i--) {
-                    if (feedbackItems[i].textContent.startsWith(feedbackText + ":")) {
+                    const strongTag = feedbackItems[i].querySelector('strong');
+                    if (strongTag && strongTag.textContent.trim().replace(':','') === nameToDelete) {
                         feedbackItems[i].remove();
+                        deletedCount++;
                     }
                 }
-                localStorage.setItem("feedbacks", feedbackList.innerHTML);
-            } else if (name && feedbackText) {
+                if (deletedCount > 0) {
+                    localStorage.setItem("feedbacks", feedbackList.innerHTML);
+                    alert(`Deleted ${deletedCount} feedback item(s) from '${nameToDelete}'.`);
+                } else {
+                    alert(`No feedback found matching the name '${nameToDelete}' to delete.`);
+                }
+            } else {
                 const feedbackItem = document.createElement("div");
                 feedbackItem.classList.add("feedback-item");
-                feedbackItem.textContent = `${name}: ${feedbackText}`;
-                feedbackList.appendChild(feedbackItem);
+                const safeName = name.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                const safeFeedback = feedbackText.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                feedbackItem.innerHTML = `<strong>${safeName}:</strong> ${safeFeedback}`;
+                
+                feedbackList.insertBefore(feedbackItem, feedbackList.firstChild);
+                
                 localStorage.setItem("feedbacks", feedbackList.innerHTML);
             }
             
