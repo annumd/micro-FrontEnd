@@ -12,38 +12,67 @@
             padding: 0;
             background-color: #e0f7f4;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
             background-color: #0e6251;
             color: #fff;
-            padding: 15px;
+            padding: 20px;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+            font-weight: 600;
+            animation: fadeIn 1s ease-out;
         }
 
         main {
             max-width: 1200px;
-            margin: 20px auto 70px auto;
+            width: 95%;
+            margin: 30px auto;
             background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            padding: 30px;
+            padding-bottom: 60px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            flex-grow: 1;
+            animation: slideInUp 0.8s ease-out;
         }
 
         h2 {
             color: #0e6251;
             text-align: center;
-            margin-bottom: 20px;
+            margin-top: 0;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d1f7f0;
         }
 
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .video-grid:last-of-type {
+            margin-bottom: 0;
         }
 
         .video {
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .video iframe {
@@ -68,14 +97,51 @@
             background-color: #0e6251;
             color: #fff;
             text-align: center;
-            padding: 10px;
-            position: fixed;
+            padding: 15px;
             width: 100%;
-            bottom: 0;
-            left: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin-top: auto;
+            box-sizing: border-box;
+        }
+
+        footer p {
+            margin: 0;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            main {
+                width: 95%;
+                padding: 25px;
+            }
+            header h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 20px;
+            }
+            .video-grid {
+                grid-template-columns: 1fr; /* Stack videos on small screens */
+                gap: 20px;
+            }
         }
     </style>
 </head>
@@ -147,63 +213,23 @@
             </div>
         </div>
 
-        <h2>Real Transformation Stories</h2>
+        <h2>Expert Talks</h2>
         <div class="video-grid">
             <div class="video">
-                <iframe src="https://www.youtube.com/embed/q8K1rjS5Jb8" allowfullscreen></iframe>
-                <p class="video-title">Inspiring Weight Loss Story</p>
+                <iframe src="https://www.youtube.com/embed/OFD7QQI23kY" allowfullscreen></iframe>
+                <p class="video-title">Nutrition Expert Panel</p>
             </div>
             <div class="video">
-                <iframe src="https://www.youtube.com/embed/_Z0JmIUATXI" allowfullscreen></iframe>
-                <p class="video-title">Health Journey Experience</p>
+                <iframe src="https://www.youtube.com/embed/yTQ0tBmLbns" allowfullscreen></iframe>
+                <p class="video-title">Weight Loss Tips</p>
             </div>
             <div class="video">
-                <iframe src="https://www.youtube.com/embed/IMYaJnpBgyw" allowfullscreen></iframe>
-                <p class="video-title">Transforming My Life</p>
+                <iframe src="https://www.youtube.com/embed/CNnkQto6jGE" allowfullscreen></iframe>
+                <p class="video-title">Healthy Lifestyle Guidance</p>
             </div>
             <div class="video">
-                <iframe src="https://www.youtube.com/embed/_X834O9MaCM" allowfullscreen></iframe>
-                <p class="video-title">My Weight Loss Journey</p>
-            </div>
-        </div>
-
-        <h2>Superfoods</h2>
-        <div class="video-grid">
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/zdjWnvbaUZo" allowfullscreen></iframe>
-                <p class="video-title">Top Superfoods Explained</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/KkvKq33wSHU" allowfullscreen></iframe>
-                <p class="video-title">Superfoods for Optimal Health</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/H4k-1cKrb3c" allowfullscreen></iframe>
-                <p class="video-title">The Power of Superfoods</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/tLXpaS95sOI" allowfullscreen></iframe>
-                <p class="video-title">Incorporating Superfoods into Your Diet</p>
-            </div>
-        </div>
-
-        <h2>Brain Health</h2>
-        <div class="video-grid">
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/-e-4Kx5px_I" allowfullscreen></iframe>
-                <p class="video-title">Nutrition for Brain Health</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/xyQY8a-ng6g" allowfullscreen></iframe>
-                <p class="video-title">Brain-Boosting Foods</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/lEXBxijQREo" allowfullscreen></iframe>
-                <p class="video-title">Cognitive Health Tips</p>
-            </div>
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/5Y0Y4ySMutQ" allowfullscreen></iframe>
-                <p class="video-title">Foods for Better Memory</p>
+                <iframe src="https://www.youtube.com/embed/fFOtjzDLVko" allowfullscreen></iframe>
+                <p class="video-title">Sustainable Weight Management</p>
             </div>
         </div>
     </main>
