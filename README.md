@@ -17,7 +17,6 @@ Technologies Used
 
 HTML5: Structure of the website.
 CSS3: Styling and layout design.
-JavaScript: Interactive elements (carousel functionality).
 
 File Structure
 
@@ -32,22 +31,9 @@ File Structure
 |-- styles.css       # (Optional) External CSS file for styling
 |-- script.js        # (Optional) JavaScript file for interactions
 
-Setup & Usage
-
-Clone or download the repository.
-Open index.html in a web browser.
-Navigate through the website using the menu.
-
-How the Carousel Works
-
-The carousel displays images in a slideshow format. Users can click on previous and next buttons to navigate through the images. The JavaScript functions nextSlide() and prevSlide() handle the transitions.
-
-Check for console errors in the browser's developer tools (F12 → Console).
-
 Future Enhancements
 
 Add user authentication for personalized diet plans.
-Improve UI with more animations and transitions.
 Integrate a database to store user preferences.
 
 
